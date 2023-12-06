@@ -1,4 +1,4 @@
-﻿namespace GymMembershipINSY
+namespace GymMembershipINSY
 {
     internal class Program
     {

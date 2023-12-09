@@ -9,10 +9,10 @@ namespace GymMembershipINSY.MemberWorkout
 {
     internal class MemberWorkout
     {
-        public GymMember Member { get; set; }
-        public WorkoutClasses Workoutclass { get; set; }
+        public gymMember Member { get; set; }
+        public WorkoutClass Workoutclass { get; set; }
 
-        public MemberWorkoutClass(GymMember m, WorkoutClasses c)
+        public MemberWorkoutClass(gymMember m, WorkoutClass c)
         {
             Member = m;
             Workoutclass = c;

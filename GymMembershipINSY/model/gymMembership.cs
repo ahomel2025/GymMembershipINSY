@@ -3,18 +3,19 @@
 namespace GymMembershipINSY.model;  
     internal class GymMembership  
     {
-  
-     public string MemberName { get; set; } //grabs members name
+
+        public string MemberFirstName { get; set; } //grabs members first name
+        public string MemberLastName { get; set; } //grabs members last name
         public DateTime StartDate { get; set; } //logs the start date
         public DateTime EndDate { get; set; } //logs the end date
         public bool IsActive { get; set; } //bools from membership if still valid
         public string MembershipType { get; set; } // shows if member has Blue or Gold membership status
 
        
-
         public GymMembership(string name, DateTime startDate, DateTime endDate, string membershipType)
         {
-            MemberName = name;
+            MemberFirstName = firstName;
+            MemberLastName = lastName;
             StartDate = startDate;
             EndDate = endDate;
             IsActive = true; //if membership is active
@@ -25,18 +26,18 @@ namespace GymMembershipINSY.model;
         {
             EndDate = EndDate.AddMonths(months);
             IsActive = true;
-            Console.WriteLine($"{MemberName}'s {MembershipType} membership has been renewed until {EndDate.ToShortDateString()}"); //shows message that membership has been renewed
+            Console.WriteLine($"{MemberFirstName}'s {MembershipType} membership has been renewed until {EndDate.ToShortDateString()}"); //shows message that membership has been renewed
         }
 
         public void CheckMembershipStatus() //checks membership status
         {
             if (IsActive) //if status is active, it presents a message
             {
-                Console.WriteLine($"{MemberName}'s {MembershipType} membership is active until {EndDate.ToShortDateString()}");
+                Console.WriteLine($"{MemberFirstName}'s {MembershipType} membership is active until {EndDate.ToShortDateString()}");
             }
             else //if status is expired, it presents a different message
             {
-                Console.WriteLine($"{MemberName}'s {MembershipType} membership has expired");
+                Console.WriteLine($"{MemberFirstName}'s {MembershipType} membership has expired");
             }
         }
     }

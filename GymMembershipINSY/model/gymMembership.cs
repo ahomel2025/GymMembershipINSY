@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace GymMembershipINSY.model;  
-    internal class GymMembership  
+    public class GymMembership  
     {
 
         public string MemberFirstName { get; set; } //grabs members first name
@@ -22,6 +22,19 @@ namespace GymMembershipINSY.model;
             MembershipType = membershipType; //able to get into the gym
         }
 
+        public static int autoIncrement;
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string MemberFirstName { get; set; }
+        public string MemberLastName { get; set; }
+
+        public GymMembership()
+        {
+            autoIncreament++;
+            Id = autoIncreament;
+        }
+    
         public void RenewMembership(int months) //if membership needs to be renewed soon
         {
             EndDate = EndDate.AddMonths(months);

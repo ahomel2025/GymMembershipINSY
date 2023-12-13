@@ -8,17 +8,17 @@ namespace GymMembershipINSY.Trainer
 {
     internal class Trainer
     {
-        public string TrainerName { get; set; }//grabs the trainer name 
-        public string Category { get; set; }//grabs the category the trainer teaches workout classes in 
+        public string TrainerName { get; set; }
+        public string Category { get; set; }
 
-        public Trainer(string name, string category)//this is the constructor
+        public Trainer(string name, string category)
         {
             TrainerName = name;
             Category = category;
 
         }
 
-        public void DisplayDetails()//the result of this tells you the trainers name and category 
+        public void DisplayDetails()
         {
             Console.WriteLine($"Trainer: {TrainerName}, Category: {Category}");
 

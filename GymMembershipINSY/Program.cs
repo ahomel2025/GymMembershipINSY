@@ -6,20 +6,20 @@ namespace GymMembershipINSY;
 
     internal class Program
     {
-       Private static Members members;
-	Private static List<WorkoutClass> workoutClasses;
-	Private static List<MemberWorkoutClass> memberWorkoutClass;
-	Private static Member authenticatedUser;
+       private static Member members;
+	private static List<WorkoutClass> workoutClasses;
+	private static List<MemberWorkoutClass> memberWorkoutClass;
+	private static Member authenticatedUser;
 //once someone logs in they can be in there
 //by initializing all of these it allows me to use them 
 //static because we do not want to create objects out of it
 
-
+private static Member members;	    
 Static void Main(string[] args) 
     {
 
     Console.WriteLine(“Loading…”);
-    Initializing();
+    Initializing();//this is the creation and initialization of all the objects
     Menu();
     }
 
@@ -33,30 +33,22 @@ Static void Initialize()
         Password = "gertsy456"
         };
         Var w1 = new WorkoutClass();
-        Var w2 = new WorkoutClass();
-        Var w3 = new WorkoutClass();
 
         Var mwc1 = new MemberWorkoutClass (m1, w1);
-        Var mwc2 = new MemberWorkoutClass (m2, w2);
 
 
-
-        Members = new Members();
-        member.members.Add(m1);
-        member.memberss.Add(m2);
+        members = new Member();
+        members.members.Add(m1);
 //now an abject of the member class, at any point i can see how many members I have 
 
         workoutClasses = new List<WorkoutClass>();
         workoutClasses.Add(w1);
-        workoutClasses.Add(w2);
-        workoutClassess.Add(w3);
 
         memberWorkoutClasses = new List<MemberWorkoutClass>();
-        memberWorkoutClassses.Add(mwc1);
-        memberWorkoutClasses.Add(mwc20;
+        memberWorkoutClasses.Add(mwc1);
 }
 
-Static void Menu()
+static void Menu()
 {
 //we want to code this menu by creating an infinite event loop
         bool done = false;
@@ -64,30 +56,30 @@ Static void Menu()
     while(!done)
 	{
 		console.writeline(“Options: Login: 1— SihnUp: 2— Logout: 3— WorkoutClass: 4— Quit: q”);
-		console.write(“choice: “);
+		console.write(“Choice: “);
 		String choice = Console.ReadLine();
 
 		    switch(choice)
 		    {  
-		    Case “1”;
+		    case “1”;
 			LoginMenu();
-            break;
+           		 break;
 			//if its 1 then 
-		    Case “2”;
+		    case “2”;
 			SignUpMenu();
 			break;
-		    Case “3”
+		    case “3”
 			LogoutMenu();
 			break;
-		    Case “4”
+		    case “4”
 			WorkoutClassMenu;
 			break;
-		    Case “q”
+		    case “q”
 			Done = true;
 			break;
-		    Default:
+		    default:
 		    Console.Writeline("Invalid command!");
-            break;
+           		 break;
                     
 		    }
 	
@@ -103,93 +95,90 @@ Static void Menu()
             if(authentiactedMember == null)
             {
             Console.Write(“Enter username: “);
-            String username = Console.ReadLine();
+            string username = Console.ReadLine();
             Console.Write(“Enter password: “);
-            String password = Console.ReadLine();
+            string password = Console.ReadLine();
             authenticatedMember = members.Authenticate(username, password);
-
-                if(authenticatedMember !=null)
+	   if(authenticatedMember !=null)
                 {
-                Console.WriteLine($”Welcome {authenticatedMember.FirstName}”);
+               	 Console.WriteLine($”Welcome {authenticatedMember.FirstName}”);
                 }
 
                 Else 
                 {
-                Console.WriteLine(“Invalid username or password.”)
-            //never say if the username or password is specifically wrong, lets people get hacked faster 
-
-            }
+               	 Console.WriteLine(“Invalid username or password.”)
+            //never say if the username or password is specifically wrong,
+	 // lets people get hacked faster, this just tells user either one is wrong without specification
+          	  }
+		    
                 Else 
                 {
 	Console.Writeline($”You are already logged in as {authenticatedMember.UserName};
                 }
            }
-
-
                       
 
         Static void LogoutMenu()
     {
     authenticatedMember =  null;
-    Console.WriteLine(“Logged out.”);
+    Console.WriteLine(“Logged out!”);
     }
 
-    Static void SignUpMenu()
+    static void SignUpMenu()
     {
     	Console.Write(“First name: “);
-        String firstname = Console.ReadLine();
+        string firstname = Console.ReadLine();
     	Console.Write(“Last name: “);
-        String lastname = Console.ReadLine();
+        string lastname = Console.ReadLine();
     	Console.Write(“username: “);
-        String username= Console.ReadLine();
+        string username= Console.ReadLine();
     	Console.Write(“password: “);
-        String password = Console.ReadLine();
+        string password = Console.ReadLine();
 
 
-        Var newCustomer = new Customer
+        var newMember = new Member
      {
 	FirstName = firstname,
-    LastName = lastname,
-    UserName = username,
-    Password = password
+   	 LastName = lastname,
+   	 UserName = username,
+   	 Password = password
     };
-    member.members.Add(newMember);
-    Console.WriteLine(“Profile created”);
+	    
+    members.members.Add(newMember);
+	    
+    Console.WriteLine(“Profile created!”);
+	    
     }
 
 
-
-    Static void WorkoutClassMenu()
+    static void WorkoutClassMenu()
     {
     //im gonna search and view results
     //i wanna show workout classes for current user
-
-        
         if(authenticatedUser == null)
         {
-        Console.WriteLine(“You are not logged in”);
-        Console.WriteLine(“You need to log in before viewing your workout classes. “);
-        Return;
+       		 Console.WriteLine(“You are not logged in”);
+       		 Console.WriteLine(“You need to log in before viewing your workout classes. “);
+       		 return;
         //return means we are done with this method, basically like else
         }
         
-        Var memberworkoutwlass = memberWorkoutClass.Where( o => o.member.UserName == authenticatedMember.UserName); 
+var memberworkoutwlass = memberWorkoutClass.Where( o => o.members.UserName == authenticatedMember.UserName); 
         //within the list of members and workout classes, it finds the specific app for the user
         
-	    if(memberWorkoutClass.Count() == 0)
-	    {
-	    Console.WriteLine(“You don’t have any workout classes scheduled.”);
-
-	    }
+  if(memberWorkoutClass.Count() == 0)
+  {
+	Console.WriteLine(“0 workout classes scheduled.”);
+  }
         
-        Else
-        {
+ else
+ {
 	foreach(var memberworkoutclasses in memberWorkoutClasses)
-		{
-			Console.WriteLine(memberWorkoutClasses.workoutClass.);
-		}
+	 {
+		Console.WriteLine(memberWorkoutClasses.workoutClass.date);
+	}
 
 }
 }
 
-}
+
